@@ -4,8 +4,9 @@ package com.ipl.training.induction.draughts;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.UnknownHostException;
-
+import java.rmi.RemoteException;
 import javax.swing.UIManager;
+
 
 import com.ipl.training.induction.draughts.controller.DraughtsController;
 import com.ipl.training.induction.draughts.controller.IDraughtsController;
@@ -29,7 +30,7 @@ public final class DraughtsGame {
         controller.addView(DraughtsView.createView());
         try {
             controller.addView(RemoteView.createView());
-        } catch (UnknownHostException e) {
+        } catch (UnknownHostException | RemoteException e) {
             // Do nothing, remote games will not be supported
         }
         controller.newGame();
